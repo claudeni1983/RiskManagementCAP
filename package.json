@@ -10,10 +10,13 @@
     "@sap/cds": "7.2.0",
     "@sap/cds-dk": "7.6.0",
     "@sap-cloud-sdk/resilience": "3.12.0",
-    "express": "^4"
+    "express": "^4",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^1"
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7"
   },
   "scripts": {
     "start": "cds-serve"
@@ -22,7 +25,14 @@
     "requires": {
       "API_BUSINESS_PARTNER": {
         "kind": "odata-v2",
-        "model": "srv/external/API_BUSINESS_PARTNER"
+        "model": "srv/external/API_BUSINESS_PARTNER",
+        "credentials": {
+          "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/"
+        }
+      },
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
       }
     }
   }
